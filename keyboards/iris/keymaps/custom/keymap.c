@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
      KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_DEL,     KC_ENT, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_ASRP,
   //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
-                       MO(_SYM),LSFT_T(KC_BSPC), KC_LCTL,        KC_RALT, RSFT_T(KC_SPC), MO(_SYM)
+                       MO(_SYM),LSFT_T(KC_BSPC), TD(0),       TD(0), RSFT_T(KC_SPC), MO(_SYM)
   //                  `----+----+----'        `----+----+----'
   ),
   
@@ -121,3 +121,42 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
+
+void mod_dance_finished(qk_tap_dance_state_t *state, void *user_data) {
+  switch(state->count) {
+    case(1):
+      register_code(KC_LCTL);
+      break;
+    case(2):
+      register_code(KC_LALT);
+      break;
+    case(3):
+      register_code(KC_LCTL);
+      register_code(KC_LALT);
+      break;
+    default:
+      break;
+  }   
+}
+
+void mod_dance_reset(qk_tap_dance_state_t *state, void *user_data) {
+  switch(state->count) {
+    case(1):
+      unregister_code(KC_LCTL);
+      break;
+    case(2):
+      unregister_code(KC_LALT);
+      break;
+    case(3):
+      unregister_code(KC_LCTL);
+      unregister_code(KC_LALT);
+      break;
+    default:
+      break;
+  }   
+}
+
+qk_tap_dance_action_t tap_dance_actions[] = {
+  [MOD_DANCE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, mod_dance_finished, mod_dance_reset)
+};
+
