@@ -13,7 +13,7 @@ enum custom_keycodes {
   QWERTY = SAFE_RANGE,
   LOWER,
   RAISE,
-  ADJUST,
+  ADJUST
 };
 
 #define KC_ KC_TRNS
