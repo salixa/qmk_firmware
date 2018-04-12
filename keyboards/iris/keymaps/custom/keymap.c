@@ -134,6 +134,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 
+void send_key(uint16_t code) {
+  register_code(code);
+  unregister_code(code);
+}
+
 void matrix_scan_user(void) {
   LEADER_DICTIONARY() {
     leading = false;
@@ -170,6 +175,101 @@ void matrix_scan_user(void) {
       unregister_code(KC_LBRC);
       register_code(KC_RBRC);
       unregister_code(KC_RBRC);
+      unregister_code(KC_LSFT);
+    }
+    
+    SEQ_TWO_KEYS(KC_G, KC_A) {
+      register_code(KC_LSFT);
+      send_key(KC_COMM);
+      unregister_code(KC_LSFT);
+      
+      send_key(KC_A);
+      send_key(KC_S);
+      send_key(KC_C);
+      send_key(KC_I);
+      send_key(KC_I);
+      
+      register_code(KC_LSFT);
+      send_key(KC_DOT);
+      unregister_code(KC_LSFT);
+    }
+    
+    SEQ_THREE_KEYS(KC_G, KC_A, KC_S) {
+      register_code(KC_LSFT);
+      send_key(KC_COMM);
+      unregister_code(KC_LSFT);
+      
+      send_key(KC_SLSH);
+      send_key(KC_A);
+      send_key(KC_S);
+      send_key(KC_C);
+      send_key(KC_I);
+      send_key(KC_I);
+      
+      register_code(KC_LSFT);
+      send_key(KC_DOT);
+      unregister_code(KC_LSFT);
+    }
+    
+    SEQ_TWO_KEYS(KC_G, KC_T) {
+      register_code(KC_LSFT);
+      send_key(KC_COMM);
+      unregister_code(KC_LSFT);
+      
+      send_key(KC_T);
+      send_key(KC_H);
+      send_key(KC_R);
+      send_key(KC_E);
+      send_key(KC_E);
+      register_code(KC_LSFT);
+      send_key(KC_MINS);
+      unregister_code(KC_LSFT);
+      send_key(KC_D);
+      send_key(KC_O);
+      send_key(KC_T);
+      send_key(KC_S);
+      
+      register_code(KC_LSFT);
+      send_key(KC_DOT);
+      unregister_code(KC_LSFT);
+    }
+    
+    SEQ_TWO_KEYS(KC_G, KC_E) {
+      register_code(KC_LSFT);
+      send_key(KC_COMM);
+      unregister_code(KC_LSFT);
+      
+      send_key(KC_E);
+      send_key(KC_N);
+      send_key(KC_D);
+      register_code(KC_LSFT);
+      send_key(KC_MINS);
+      unregister_code(KC_LSFT);
+      send_key(KC_L);
+      send_key(KC_I);
+      send_key(KC_N);
+      send_key(KC_E);
+      
+      register_code(KC_LSFT);
+      send_key(KC_DOT);
+      unregister_code(KC_LSFT);
+    }
+    
+    SEQ_TWO_KEYS(KC_G, KC_P) {
+      register_code(KC_LSFT);
+      send_key(KC_COMM);
+      unregister_code(KC_LSFT);
+      
+      send_key(KC_P);
+      send_key(KC_A);
+      send_key(KC_R);
+      send_key(KC_T);
+      send_key(KC_N);
+      send_key(KC_E);
+      send_key(KC_R);
+      
+      register_code(KC_LSFT);
+      send_key(KC_DOT);
       unregister_code(KC_LSFT);
     }
   }
