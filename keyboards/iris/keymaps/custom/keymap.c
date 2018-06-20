@@ -151,6 +151,8 @@ void matrix_scan_user(void) {
       register_code(KC_0);
       unregister_code(KC_0);
       unregister_code(KC_LSFT);
+      register_code(KC_LEFT);
+      unregister_code(KC_LEFT);
     }
     
     SEQ_ONE_KEY(KC_D) {
@@ -158,6 +160,8 @@ void matrix_scan_user(void) {
       unregister_code(KC_LBRC);
       register_code(KC_RBRC);
       unregister_code(KC_RBRC);
+      register_code(KC_LEFT);
+      unregister_code(KC_LEFT);
     }
     
     SEQ_ONE_KEY(KC_G) {
@@ -167,6 +171,8 @@ void matrix_scan_user(void) {
       register_code(KC_DOT);
       unregister_code(KC_DOT);
       unregister_code(KC_LSFT);
+      register_code(KC_LEFT);
+      unregister_code(KC_LEFT);
     }
     
     SEQ_ONE_KEY(KC_S) {
@@ -176,6 +182,8 @@ void matrix_scan_user(void) {
       register_code(KC_RBRC);
       unregister_code(KC_RBRC);
       unregister_code(KC_LSFT);
+      register_code(KC_LEFT);
+      unregister_code(KC_LEFT);
     }
     
     SEQ_TWO_KEYS(KC_G, KC_A) {
